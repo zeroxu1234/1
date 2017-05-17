@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>极光私人影院</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/jquery.fullPage.css">
+
+    <style>
+        /*@font-face {font-family:'myFont'; src: url(font/Fong1.TTF)}  */
+        /*#menu { margin: 0; padding: 0; position: fixed; right: 10px; top: 10px; list-style-type: none; z-index: 70;}
+#menu li { float: left; margin:  0 10px 0 0; font-size: 14px;}
+@media screen and (min-width: 1921px) { 
+	#menu li { float: left; margin:  0 10px 0 0; font-size: 2.2em;}
+}
+#menu a { float: left; padding: 10px 10px;  color: #9C9696; text-decoration: none;}
+#menu .active a { color: #fff; }*/
+        
+        .section {
+            text-align: center;
+            font-family: "微软雅黑";
+            color: #fff;
+        }
+        /*.section1 { background: url(images/1.jpg);filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";-moz-background-size:100% 100%;background-size:100% 100%; z-index:-1;}*/
+        
+        .section2 {
+            background: url(images/background2.jpg);
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            -moz-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+        
+        .section3 {
+            background: url(images/background3.jpg);
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            -moz-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+        
+        .section4 {
+            background: url(images/background4.jpg);
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            -moz-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+        
+        .section5 {
+            background: url(images/background5.jpg);
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            -moz-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+        
+        .section6 {
+            background: url(images/background6.jpg);
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            -moz-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+        
+        .section7 {
+            background: url(images/background7.jpg);
+            filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+            -moz-background-size: 100% 100%;
+            background-size: 100% 100%;
+            z-index: -2;
+        }
+        
+        .con {
+            width: 96%;
+            font-size: 14px;
+            text-align: left;
+            color: #9C9696;
+            position: relative;
+            top: 5%;
+            left: 2%;
+        }
+        
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        video {
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+            /*加滤镜*/
+            /*-webkit-filter: grayscale(100%);*/
+            /*filter:grayscale(100%);*/
+            z-index: -999;
+        }
+        
+        source {
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+        }
+        
+        .breathe-btn {
+            width: 50px;
+            height: 50px;
+            padding-top: 10px;
+            line-height: 15px;
+            border: 1px solid #1cfee6;
+            border-radius: 100%;
+            color: #fff;
+            font-size: 10px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+            overflow: hidden;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#1cfee6), to(#1cfee6));
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-name: breathe;
+            -webkit-animation-duration: 2700ms;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: alternate;
+        }
+        
+        @-webkit-keyframes breathe {
+            0% {
+                opacity: .2;
+                box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+            }
+            100% {
+                opacity: 1;
+                border: 1px solid rgba(59, 235, 235, 1);
+                box-shadow: 0 1px 30px rgba(59, 255, 255, 1);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/animate.css">
+    <!--<link rel="stylesheet" href="css/Vidage.css" />-->
+    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
+    <script src="js/carousel.js"></script>
+    <script>
+        $(function() {
+            $('#dowebok').fullpage({
+                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7'],
+                navigationTooltips: ['首页', '了解极光', '用户体验', '正版版权', '软件研发', '硬件方案', '加入极光'],
+                'navigation': true,
+                // resize:true,
+                // menu: '#menu',
+                keyboardScrolling: true,
+                afterRender: function() {
+                    $("#loadingDiv").show();
+                    setTimeout('$("#loadingDiv").fadeOut(1000)', 8000);
+                    setTimeout('$("#logoround").fadeIn()', 8000);
+                    setTimeout('$("#summary").fadeIn(1500)', 10000);
+                    setTimeout('$("#BMsummary").fadeIn(1500)', 11000);
+                },
+                afterLoad: function(anchorLink, index) {
+                    if (index == 1) {
+                        $("#menu").show();
+                        $("#logoround").fadeIn();
+                        setTimeout('$("#summary").fadeIn(1500)', 2000);
+                        setTimeout('$("#BMsummary").fadeIn(1500)', 3000);
+                    }
+                    if (index == 2) {
+                        $("#page2logo1").show();
+                        $("#page2logo1").addClass('animated fadeInUp');
+
+                        $("#page2text1").show();
+                        $("#page2text1").addClass('animated fadeInRight');
+
+                        setTimeout('$("#page2text2").show()', 1000);
+                        setTimeout('$("#page2text2").addClass("animated fadeInLeft")', 1000);
+
+                        setTimeout('$("#page2logo2").show()', 1000);
+                        setTimeout('$("#page2logo2").addClass("animated fadeInUp")', 1000);
+                    }
+                    if (index == 3) {
+                        show3(1);
+                    }
+                    if (index == 4) {
+                        $("#page4left").show();
+                        $("#page4left").addClass('animated fadeInLeft');
+                        setTimeout('$("#page4logo").fadeIn(1500);', 1000);
+                        setTimeout('$("#page4text").fadeIn(1500);', 1500);
+                        setTimeout('$("#page4img").fadeIn(1500);', 2000);
+                    }
+                    if (index == 5) {
+                        $("#page5lefttext").show();
+                        $("#page5lefttext").addClass('animated fadeInLeft');
+                        $("#page5righttext").show();
+                        $("#page5righttext").addClass('animated fadeInRight');
+                        setTimeout('$("#page5centertext").fadeIn(1500)', 1000);
+                        setTimeout('$("#page5leftimg").show()', 1500);
+                        setTimeout('$("#page5leftimg").addClass("animated fadeInLeft")', 1500);
+                        setTimeout('$("#page5rightimg").show()', 1500);
+                        setTimeout('$("#page5rightimg").addClass("animated fadeInRight")', 1500);
+                    }
+                    if (index == 6) {
+                        $("#left6").show();
+                        $("#left6").addClass('animated fadeInLeft');
+                        $("#right6").show();
+                        $("#right6").addClass('animated fadeInRight');
+
+                    }
+                    if (index == 7) {
+                        $("#threediv").show();
+                    }
+                },
+                onLeave: function(index, direction) {
+                    if (index == '1') {
+                        $("#menu").hide();
+                        $("#logoround").fadeOut();
+                        $("#summary").fadeOut();
+                        $("#BMsummary").fadeOut();
+                    }
+                    if (index == '2') {
+                        $("#page2logo1").hide();
+                        $("#page2logo2").hide();
+                        $("#page2text1").hide();
+                        $("#page2text2").hide();
+                    }
+                    if (index == '3') {
+                        $("#imgsm").hide();
+                        $("#imgzy").hide();
+                        $("#imgff").hide();
+                        $("#imglh").hide();
+                        $("#light3").hide();
+                        $("#tabinfo3").hide();
+                    }
+                    if (index == '4') {
+                        $("#page4left").hide();
+                        $("#page4left").addClass('animated fadeInLeft');
+                        $("#page4logo").hide();
+                        $("#page4text").hide();
+                        $("#page4img").hide();
+                    }
+                    if (index == '5') {
+                        $("#page5lefttext").hide();
+                        $("#page5righttext").hide();
+                        $("#page5centertext").hide();
+                        $("#page5leftimg").hide();
+                        $("#page5rightimg").hide();
+                    }
+                    if (index == '6') {
+                        $("#left6").hide();
+                        $("#right6").hide();
+                    }
+                    if (index == '7') {
+                        $("#threediv").hide();
+                    }
+                }
+            });
+
+            $(window).resize(function() {
+                autoScrolling();
+            });
+
+            function autoScrolling() {
+                var $ww = $(window).width();
+                // if($ww < 1024){
+                //     $.fn.fullpage.setAutoScrolling(false);
+                // } else {
+                //     $.fn.fullpage.setAutoScrolling(true);
+                // }
+                $.fn.fullpage.setAutoScrolling(true);
+            }
+
+            autoScrolling();
+
+        });
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?0973ca165877a6265d48c7876013bddd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+        function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-96624934-1', 'auto');
+        ga('send', 'pageview');
+        ga('set', 'userId', {
+            {
+                USER_ID
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <!--<div class="Vidage">
+            <div class="Vidage__image"></div>
+            <video id="VidageVideo" class="Vidage__video" preload="metadata" loop autoplay muted>
+            <source src="videos/2.webm" type="video/webm">
+            <source src="videos/2.mp4" type="video/mp4">
+            </video>
+			<div class="Vidage__backdrop"></div>
+        </div>-->
+    <video autoplay="autoplay" loop="loop">
+		<source src="videos/2.webm" type="video/webm">  
+    <source  src="videos/2.mp4" type="video/mp4" >;  
+</video>
+
+    <div id="loadingDiv" style="width: 100%;height: 100%;position: absolute;z-index: 500;background-color: black;" hidden="true">
+        <div class="load"><img alt="" src="images/1.gif"></div>
+    </div>
+
+
+    <div id="threediv" class="row p7-w9" align="center" hidden="true">
+        <div class="col-xs-4">
+            <div class="p7-w2" id="click1">
+                <div class="correct1">
+                    <div class="p7-w3" id="back1" hidden="true"></div>
+                    <div id="roundshow1" class="p7-w4">
+                        <div class="p7-fn1"><img alt="" src="images/team1.png" style="width:40%; "></div>
+                        <div class="p7-fn2 font3">加入极光团队</div>
+                        <div style="height: 320px;">
+                            <div class="p7-w5 font2">如果你也志愿投身改善中国电影市场的浪潮，如果你也“身负绝技”为一个极速蹿升的品牌添砖加瓦，那么你就是我们在静静等待的下一个Mr./Ms. Right!</div>
+                            <div class="p7-w6 font2">了解详情</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="opposite">
+                    <div id="roundback1" class="p7-w7">
+                        <div class="p7-fn1"><img alt="" src="images/team1.png" style="width:40%; "></div>
+                        <div class="p7-fn2 font3">加入极光团队</div>
+                        <div class="p7-w8">
+                            <div class="font2" style="width: 50%;line-height: 50px;">请把你的简历和想对极光说的话发送至</div>
+                            <div class="font2">hr@jiguangcenema.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="p7-w2" id="click2">
+                <div class="correct1">
+                    <div id="back2" class="p7-w3" hidden="true"></div>
+                    <div id="roundshow2" class="p7-w4">
+                        <div class="p7-fn1"><img alt="" src="images/team2.png" style="width:40%; "></div>
+                        <div class="p7-fn2 font3">加盟极光</div>
+                        <div style="height: 320px;">
+                            <div class="p7-w5 font2">如果你厌倦了朝九晚五的格子间生活如果你想冲击七位数年收入如果你需要一个管理成本低的投资项目开一家电影院吧！</div>
+                            <div class="p7-w6 font2">了解详情</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="opposite">
+                    <div id="roundback2" class="p7-w7">
+                        <div class="p7-fn1"><img alt="" src="images/team2.png" style="width:40%; "></div>
+                        <div class="p7-fn2 font3">加盟极光</div>
+                        <div class="p7-w8">
+                            <img alt="" src="images/MK.png" width="169px" height="169px">
+                            <div class="font2" style="margin-top: 50px;">已有256人关注极光加盟</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="p7-w2" id="click3">
+                <div class="correct1">
+                    <div id="back3" class="p7-w3" hidden="true"></div>
+                    <div id="roundshow3" class="p7-w4">
+                        <div class="p7-fn1"><img alt="" src="images/team3.png" style="width:40%; "></div>
+                        <div class="p7-fn2 font3">众筹开店</div>
+                        <div style="height: 320px;">
+                            <div class="p7-w5 font2">众人拾柴火焰高，一个好汉三个帮。因为你的投入，极光又将在一个新的城市绽放光芒！猜猜看，你会是第几个加入极光众筹计划的领路人？</div>
+                            <div class="p7-w6 font2">了解详情</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="opposite">
+                    <div id="roundback3" class="p7-w7">
+                        <div class="p7-fn1"><img alt="" src="images/team3.png" style="width:40%; "></div>
+                        <div class="p7-fn2 font3">众筹开店</div>
+                        <div class="p7-w8">
+                            <img alt="" src="images/code.jpg">
+                            <div class="font2" style="margin-top: 50px;">已有256人加入众筹计划</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute;left: 12%;bottom: -5%;">上海莹案信息科技有限公司 </div>
+        <div style="position: absolute;left: 43%;bottom: -5%;">地址:上海市徐汇区天钥桥路580号星游城6楼 </div>
+        <div style="position: absolute;left: 79%;bottom: -5%;">联系电话： 400-677-7267</div>
+    </div>
+
+
+
+
+
+    <!--<ul id="menu">
+	<li data-menuanchor="page1" class="active"><a href="#page1">首页</a></li>
+	<li data-menuanchor="page2"><a href="#page2">了解极光</a></li>
+	<li data-menuanchor="page3"><a href="#page3">用户体验</a></li>
+	<li data-menuanchor="page4"><a href="#page4">正版版权</a></li>
+	<li data-menuanchor="page5"><a href="#page5">软件研发</a></li>
+	<li data-menuanchor="page6"><a href="#page6">硬件方案</a></li>
+	<li data-menuanchor="page7"><a href="#page7">加入极光</a></li>
+</ul>-->
+
+    <div id="dowebok">
+
+        <div class="section section1">
+
+            <div class="w1">
+                <img id="summary" class="img-with1 dp" src="images/p1-1.png">
+            </div>
+            <div class="p1-w1" id="logoround">
+                <div class="correct">
+                    <img class="test2" id="logo" src="images/logo.png">
+                </div>
+                <div class="opposite">
+                    <img class="test" id="bestmovie" src="images/bestmovie.png">
+                </div>
+            </div>
+            <div class="w2" align="left" id="BMsummary" style="display: none;">
+                <!--<img src="images/2.gif"> <span class="sp1">东方明珠集团百视通数字电影有限公司</span>-->
+                <img src="images/2.gif"> <span class="sp1">上海莹案信息科技有限公司</span>
+            </div>
+
+        </div>
+
+        <div class="section section2">
+            <h1 class="tm font1 w3">了解极光</h1>
+            <div class="row w4">
+                <div class="col-xs-3" id="page2logo1" hidden="true">
+                    <div><img alt="" src="images/dfmzlog2.png"></div>
+                    <div class="mp"><img alt="" src="images/smg2.png"></div>
+                </div>
+                <div class="col-xs-9 p2-l" align="left" id="page2text1" hidden="true">
+                    <div class="font3 w6">东方明珠集团</div>
+                    <p class="font2">上海东方明珠新媒体股份有限公司「股票代码：600637」是上海广播电视台、上海文化广播影视集团有限公司统一的产业平台和资本平台。东方明珠拥有中国规模最大、门类最齐、特色鲜明的内容版权库以及国内最大的多渠道视频集成与分发平台。</p>
+                    <p class="font2">以强大的媒体业务为根基，以互联网电视业务为切入点，全力构筑“内容、平台与渠道、服务”在内的媒体生态系统、商业模式和体质架构，实现受众向用户的转变及流量变现，打造最具市场价值和传播力、公信力、影响力的新型互联网媒体集团 。</p>
+                </div>
+            </div>
+            <div class="row w5">
+                <div class="col-xs-9 p2-r" align="left" id="page2text2" hidden="true">
+                    <div class="font3 w6">极光私人影院</div>
+                    <p class="font2">百视通数字电影院线有限公司是东方明珠新媒体股份有限公司下属全资子公司，SMG成员机构。百视通数字电影院线被广电总局授予《电影发行许可证（专）》，为现在国内唯一符合点播影院规范的发行方。</p>
+                    <p class="font2">2016年正式创建极光品牌，由一支互联网思维的年轻团队自主独立运营，以百视通新媒体股份有限公司的海量版权库以及国家数字电影节目中心的节目片库作为内容支撑，以互联网思维的品牌模式，完善健全的营销与运营体系服务于极光的所有合作方，致力于打造一支“统一品牌、统一管理、统一经营”的现代化管理模式的数字电影院线。</p>
+                </div>
+                <div class="col-xs-3" id="page2logo2" hidden="true">
+                    <div><img alt="" src="images/best2.png" style="width: 100%;"></div>
+                    <div class="mp"><img alt="" src="images/jiguang2.png"></div>
+                </div>
+
+                <!--<div class="col-xs-3" id="page2logo1" hidden="true">
+				<div class="mp"><img alt="" src="images/jiguang2.png"></div>			
+			</div> 			
+<div class="col-xs-9 p2-l" align="left" id="page2text1" hidden="true">
+			<div class="font3 w6">极光私人影院</div>
+					<p class="font2">极光私人影院率属于上海萤案信息科技有限公司，我们的两位创始人作为复旦校友，
+						一位80后资深产品经理人、一位90后互联网创业者，因为热爱电影，且看好中国电影产业的未来发展而共同创业，
+						他们自2011年以来就在点播系统、播放设备、观影工程条件、用户体验等多方位探索电影视听娱乐新体验，
+						可以说目前全国40%私人影院播放系统都出自或模仿自他们之手，通过不断的体系完善和对市场的深入了解，
+						终于在2016打造出了极光私人影院这一全国性品牌，并立即获得了上海文广集团旗下的百视通鼎力支持，成为我们的长期战略合作伙伴。</p>
+		</div>-->
+            </div>
+            <div class="down">
+                <img src="images/down-arrow.png" alt="" onclick="$.fn.fullpage.moveSectionDown();">
+            </div>
+        </div>
+
+        <div class="section section3">
+            <div class="p3-con-w">
+
+
+                <div class="p3-w1" onmousemove="show3(1)" onmouseout="hide3(1)">
+                    <span class="p3-fn1 font1" id="tab3">用户真实好评</span>
+                    <img class="p3-img-w3" id="light3" alt="" src="images/light.png" hidden="true">
+                </div>
+
+
+
+
+
+                <div class="p3-w2" onmousemove="show3(2)" onmouseout="hide3(2)">
+                    <span class="p3-fn1 font1" id="tab2">店内视觉效果</span>
+                    <img class="p3-img-w2" id="light2" alt="" src="images/light.png" hidden="true">
+                </div>
+
+
+                <div class="p3-w3">
+                    <span class="p3-fn1 font1" id="tab1" onmousemove="show3(3)" onmouseout="hide3(3)">极光独家体验</span>
+                    <img class="p3-img-w1" id="light1" alt="" src="images/light.png">
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="p3-w4" id="allinfo">
+                <div class="p3-p20" id="tabinfo1">
+                    <div class="p3-w5"><img id="imgsm" style="display: none;" src="images/sm.png"></div>
+                    <div class="p3-w5"><img id="imgzy" style="display: none;" src="images/zy.png"></div>
+                    <div class="p3-w5"><img id="imgff" style="display: none;" src="images/ff.png"></div>
+                    <div class="p3-w5"><img id="imglh" style="display: none;" src="images/lh.png"></div>
+                </div>
+                <div id="tabinfo2" align="center" hidden="true">
+                    <div class="pictureSlider poster-main" data-setting='{"width":1000,"height":400,"posterWidth":600,"posterHeight":400,"scale":0.8,"autoPlay":false,"delay":2000,"speed":500}'>
+                        <div class="poster-btn poster-prev-btn"></div>
+                        <ul class="poster-list">
+                            <li class="poster-item" style="list-style: none;">
+                                <a href="#"><img src="images/room1.png" width="100%" height="100%"></a>
+                            </li>
+                            <li class="poster-item" style="list-style: none;">
+                                <a href="#"><img src="images/room2.png" width="100%" height="100%"></a>
+                            </li>
+                            <li class="poster-item" style="list-style: none;">
+                                <a href="#"><img src="images/room3.png" width="100%" height="100%"></a>
+                            </li>
+                            <li class="poster-item" style="list-style: none;">
+                                <a href="#"><img src="images/room4.png" width="100%" height="100%"></a>
+                            </li>
+                            <li class="poster-item" style="list-style: none;">
+                                <a href="#"><img src="images/room5.png" width="100%" height="100%"></a>
+                            </li>
+                        </ul>
+                        <div class="poster-btn poster-next-btn"></div>
+                    </div>
+                </div>
+                <div class="p3-w6" id="tabinfo3" hidden="true">
+                    <div class="p3-w7" id="tabinfo3text" align="left" hidden="true">
+                        <div class="p3-fn2 font3">唯有用心，才能动心。</div>
+                        <div class="p3-fn3 font2">极光自开业至今保持全门店大众点评五星级好评，用户的真实反馈是对极光用户体验的最直接证明。 极光帮助你更快、更好地找到用户，理解用户。并通过匠心独运的运营与VI设计打造点播院线最体贴的体验与最复古摩登的视觉效果。从此，我们让用户知道，观影不再只有冰冷的放映机和荧幕，还有极光用设计，用服务体贴你更多元的需求。
+                        </div>
+                    </div>
+                    <div class="p3-w8" id="tabinfo3img" align="left" hidden="true">
+                        <div class="p3-img-w4"><img alt="" src="images/screen.png"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="down">
+                <img src="images/down-arrow.png" alt="" onclick="$.fn.fullpage.moveSectionDown();">
+            </div>
+        </div>
+
+        <div class="section section4">
+            <div class="p4-w1 font5 tm">
+                <h1 style="letter-spacing: 10px;">资质<span style="font-size:0.5em;">与</span>版权</h1>
+            </div>
+            <div class="p4-w2" id="page4left" hidden="true" style="background:url(images/p4-bg.png);">
+                <div class="p4-rw1">
+                    <img alt="" src="images/left1.jpg">
+                </div>
+                <div class="p4-rw2">
+                    <img alt="" src="images/left2.jpg">
+                </div>
+                <div class="p4-rw2">
+                    <img alt="" src="images/left3.jpg">
+                </div>
+                <div class="p4-rw2">
+                    <img alt="" src="images/left4.jpg">
+                </div>
+            </div>
+            <div class="p4-w3" id="page4logo" hidden="true">
+                <img alt="" src="images/dfmz.png">
+            </div>
+            <div class="p4-w4 font2" id="page4text" hidden="true">
+                <p style="text-align: left;">依靠母公司东方明珠的完整内容产业链的布局，极光私人影院除了海量电影片源，还将提供最新影视剧，演唱会直播，体育赛事直播等一系列内容资源，每年集团的内容采购量及版权储备量都远超所有互联网视频网站。</p>
+                <p style="text-align: left;">更为重要的是，百视通数字电影院线拥有广电总局授予的《电影发行许可证（专）》，与互联网视频网站仅拥有线上版权不同，是线下点播影院唯一合法合规的版权来源。</p>
+                <p style="text-align: left;">2018年，百视通现有的第八天2K数字影片业务将试点推广至极光私人影院，开启私人影院可以播放院线同步片的新时代。</p>
+            </div>
+            <div class="p4-w5" id="page4img" hidden="true">
+                <img src="images/p4-cn.png" alt="">
+            </div>
+            <div class="down">
+                <img src="images/down-arrow.png" alt="" onclick="$.fn.fullpage.moveSectionDown();">
+            </div>
+        </div>
+
+        <div class="section section5">
+            <div class="font1 p5-w1" id="page5lefttext" hidden="true">人性化选片软件</div>
+            <div class="font1 tm p5-w2" id="page5righttext" hidden="true" onclick="changePic(1)" style="cursor: pointer;">专业后端ERP系统</div>
+            <div class="p5-w3" id="page5centertext" hidden="true">
+                <p id="ren1" class="p5-fn1 font2">无论是通过首页展示、分类标签还是片名搜索，极光的用户界面都可以用人性化的方式了解用户所想，把最值得看的内容无障碍得自动呈现在用户面前。无论你需要回顾热门佳片，还是希望打捞独属于自己审美趣味的沧海遗珠，极光选片系统都能满足你的需求。</p>
+                <p id="ren2" class="p5-fn1 font2">同时，餐饮点单以及呼叫服务这些高频用户需求也可以在选片系统上得到满足，避免多硬件操作影响用户体验，一站式解决用户的所有需求。</p>
+                <p id="erp1" class="p5-fn1 font2" hidden="true">极光独家打造点播院线第一款专业ERP系统，集预约管理，影厅管理，移动支付，会员卡系统，影片库管理，耗材采购，人员排班，所有运营环境都可依靠极光ERP专业高效得完成。</p>
+                <p id="erp2" class="p5-fn1 font2" hidden="true">更重要的是极光ERP可以帮助更好记录每个用户的观影行为，无论你是需要回溯观影历史，还是希望找到更能吸引用户前来消费的营运方案，极光ERP管理系统比用户更懂自己。</p>
+            </div>
+            <div class="p5-w4">
+                <div class="p5-w5" id="page5leftimg" hidden="true"><img src="images/pad1.png" alt=""></div>
+                <div class="p5-w6" id="page5rightimg" hidden="true" onclick="changePic(1)" style="cursor: pointer;"><img src="images/notebook.png" alt=""></div>
+            </div>
+            <div class="down">
+                <img src="images/down-arrow.png" alt="" onclick="$.fn.fullpage.moveSectionDown();">
+            </div>
+        </div>
+
+        <div class="section section6">
+            <div class="p6-w1 font1" id="left6" hidden="true">系统整体</div>
+            <div class="p6-w2 font4" id="right6" hidden="true">解决方案</div>
+            <div class="p6-img-1"><img src="images/p6-1.png" alt=""></div>
+            <!--<img class="p6-w3" id="ljxq1" alt="" src="images/ljxq.png" onmousemove="showXQ(1)">-->
+            <div class="breathe-btn p6-w3">了解<br />详情</div>
+            <div class="p6-w4" id="xq1" hidden="true">
+                <div class="p6-w5 font3">HDM系列电影放映机</div>
+                <div class="p6-w6 "><img src="images/tanchu1.png"></div>
+                <p class="con">• 市场在售产品中唯一符合广电总 局点播影院加解密技术标准</p>
+                <p class="con">• 不基于安卓系统，封闭架构后续可支持同步片放映</p>
+                <p class="con">• 纯数字高质量音视频输出支持数字直播内容</p>
+            </div>
+            <div class="p6-w7 breathe-btn">了解<br />详情</div>
+            <!--<img class="p6-w7" id="ljxq2" alt="" src="images/ljxq.png"  onmousemove="showXQ(2)">-->
+            <div class="p6-w8" id="xq2" hidden="true">
+                <div class="p6-w5 font3">百事通A105系列就地电影管理服务器</div>
+                <div class="p6-w9"><img src="images/tanchu.png"></div>
+                <p class="con">• 40T超大容量储存空间</p>
+                <p class="con">• 24*365无间断安全运行</p>
+                <p class="con">• 最多支持40间观影厅同时播放</p>
+                <p class="con">• 配置热拔插冗余电源及风扇</p>
+                <p class="con">• 集成四端口前兆以太网卡</p>
+            </div>
+            <div class="down1">
+                <img src="images/down-arrow1.png" alt="" onclick="$.fn.fullpage.moveSectionDown();">
+            </div>
+        </div>
+
+        <div class="section section7">
+            <h1 class="p7-w1 font1">加入极光</h1>
+
+            <hr class="p7-lan" />
+            <div class="p7-lan2 font2" align="left">合作伙伴
+                <img alt="" src="images/BestMovie1.png" style="height: 50%;margin-left: 1%;">
+                <img alt="" src="images/bottomlogo1.png" style="height: 50%;margin-left: 1%;">
+                <img alt="" src="images/bottomlogo2.png" style="height: 50%;margin-left: 1%;">
+                <img alt="" src="images/bottomlogo3.png" style="height: 50%;margin-left: 1%;">
+                <img alt="" src="images/bottomlogo4.png" style="height: 50%;margin-left: 1%;">
+                <img alt="" src="images/bottomlogo5.png" style="height: 50%;margin-left: 1%;">
+                <img alt="" src="images/bottomlogo6.png" style="height: 50%;margin-left: 1%;">
+                <div class="p7-beian">沪ICP备17010355号-1</div>
+            </div>
+            <div style="position: absolute;right: 1%; bottom:2%;">
+                <img src="images/up.png" alt="" onclick="$.fn.fullpage.moveTo(1);">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+            Carousel.init($(".pictureSlider"));
+        });
+
+
+        function changePic(num) {
+            if (num == 1) {
+                $("#page5leftimg").addClass('animated fadeOutLeft');
+                $("#page5rightimg").addClass('animated fadeOutRight');
+                $("#page5lefttext").addClass('animated fadeOutLeft');
+                $("#page5righttext").addClass('animated fadeOutRight');
+                $("#page5rightimg").attr("onclick", "");
+                $("#page5righttext").attr("onclick", "");
+
+                setTimeout('$("#page5leftimg").removeClass()', 2000);
+                setTimeout('$("#page5rightimg").removeClass()', 2000);
+                setTimeout('$("#page5lefttext").removeClass()', 2000);
+                setTimeout('$("#page5righttext").removeClass()', 2000);
+
+                setTimeout('$("#page5leftimg").hide()', 2000);
+                setTimeout('$("#page5rightimg").hide()', 2000);
+                setTimeout('$("#page5lefttext").hide()', 2000);
+                setTimeout('$("#page5righttext").hide()', 2000);
+
+                setTimeout('$("#page5leftimg").addClass("p5-w5")', 2000);
+                setTimeout('$("#page5leftimg").css("z-index","1")', 2000);
+
+                setTimeout('$("#page5rightimg").addClass("p5-w6")', 2000);
+                setTimeout('$("#page5rightimg").css("z-index","2")', 2000);
+
+                setTimeout('$("#page5lefttext").addClass("font1 tm p5-w1")', 2000);
+                setTimeout('$("#page5lefttext").css("z-index","1")', 2000);
+
+                setTimeout('$("#page5righttext").addClass("font1 p5-w2")', 2000);
+                setTimeout('$("#page5righttext").css("z-index","2")', 2000);
+
+
+                setTimeout('$("#page5leftimg").addClass("animated fadeInLeft")', 2000);
+                setTimeout('$("#page5rightimg").addClass("animated fadeInRight")', 2000);
+                setTimeout('$("#page5lefttext").addClass("animated fadeInLeft")', 2000);
+                setTimeout('$("#page5righttext").addClass("animated fadeInRight")', 2000);
+
+                setTimeout('$("#page5leftimg").show()', 2000);
+                setTimeout('$("#page5rightimg").show()', 2000);
+                setTimeout('$("#page5lefttext").show()', 2000);
+                setTimeout('$("#page5righttext").show()', 2000);
+
+                $("#page5leftimg").attr("onclick", "changePic(2)");
+                $("#page5rightimg").css("cursor", "");
+                $("#page5leftimg").css("cursor", "pointer");
+                $("#page5righttext").attr("onclick", "changePic(2)");
+                $("#page5lefttext").css("cursor", "");
+                $("#page5righttext").css("cursor", "pointer");
+                $("#ren1").hide();
+                $("#ren2").hide();
+                $("#erp1").show();
+                $("#erp2").show();
+            } else {
+
+                $("#page5leftimg").addClass('animated fadeOutLeft');
+                $("#page5rightimg").addClass('animated fadeOutRight');
+                $("#page5lefttext").addClass('animated fadeOutLeft');
+                $("#page5righttext").addClass('animated fadeOutRight');
+
+                $("#page5leftimg").attr("onclick", "");
+                $("#page5lefttext").attr("onclick", "");
+
+                setTimeout('$("#page5leftimg").removeClass()', 2000);
+                setTimeout('$("#page5rightimg").removeClass()', 2000);
+                setTimeout('$("#page5lefttext").removeClass()', 2000);
+                setTimeout('$("#page5righttext").removeClass()', 2000);
+
+                setTimeout('$("#page5leftimg").hide()', 2000);
+                setTimeout('$("#page5rightimg").hide()', 2000);
+                setTimeout('$("#page5lefttext").hide()', 2000);
+                setTimeout('$("#page5righttext").hide()', 2000);
+
+                setTimeout('$("#page5leftimg").addClass("p5-w5")', 2000);
+                setTimeout('$("#page5leftimg").css("z-index","2")', 2000);
+                setTimeout('$("#page5rightimg").addClass("p5-w6")', 2000);
+                setTimeout('$("#page5rightimg").css("z-index","1")', 2000);
+                setTimeout('$("#page5lefttext").addClass("font1 p5-w1")', 2000);
+                setTimeout('$("#page5lefttext").css("z-index","2")', 2000);
+                setTimeout('$("#page5righttext").addClass("font1 tm p5-w2")', 2000);
+                setTimeout('$("#page5righttext").css("z-index","1")', 2000);
+
+                setTimeout('$("#page5leftimg").addClass("animated fadeInLeft")', 2000);
+                setTimeout('$("#page5rightimg").addClass("animated fadeInRight")', 2000);
+                setTimeout('$("#page5lefttext").addClass("animated fadeInLeft")', 2000);
+                setTimeout('$("#page5righttext").addClass("animated fadeInRight")', 2000);
+
+
+                setTimeout('$("#page5leftimg").show()', 2000);
+                setTimeout('$("#page5rightimg").show()', 2000);
+                setTimeout('$("#page5lefttext").show()', 2000);
+                setTimeout('$("#page5righttext").show()', 2000);
+
+                $("#page5rightimg").attr("onclick", "changePic(1)");
+                $("#page5leftimg").css("cursor", "");
+                $("#page5rightimg").css("cursor", "pointer");
+                $("#page5righttext").attr("onclick", "changePic(1)");
+
+                $("#page5lefttext").css("cursor", "");
+                $("#page5righttext").css("cursor", "pointer");
+                $("#ren1").show();
+                $("#ren2").show();
+                $("#erp1").hide();
+                $("#erp2").hide();
+            }
+        }
+
+
+        $("#click1").click(function() {
+            if ($("#back1").css("display") == "none") {
+                $("#back1").show();
+                $("#roundshow1").removeClass();
+                $("#roundshow1").addClass("test");
+                $("#roundback1").removeClass();
+                $("#roundback1").addClass("test2");
+                $("#roundback1").css("opacity", "1");
+            } else {
+                $("#back1").hide();
+                $("#roundshow1").removeClass();
+                $("#roundshow1").addClass("test2");
+                $("#roundback1").removeClass();
+                $("#roundback1").addClass("test");
+            }
+        });
+
+        $("#click2").click(function() {
+            if ($("#back2").css("display") == "none") {
+                $("#back2").show();
+                $("#roundshow2").removeClass();
+                $("#roundshow2").addClass("test");
+                $("#roundback2").removeClass();
+                $("#roundback2").addClass("test2");
+                $("#roundback2").css("opacity", "1");
+            } else {
+                $("#back2").hide();
+                $("#roundshow2").removeClass();
+                $("#roundshow2").addClass("test2");
+                $("#roundback2").removeClass();
+                $("#roundback2").addClass("test");
+            }
+        });
+
+        $("#click3").click(function() {
+            if ($("#back3").css("display") == "none") {
+                $("#back3").show();
+                $("#roundshow3").removeClass();
+                $("#roundshow3").addClass("test");
+                $("#roundback3").removeClass();
+                $("#roundback3").addClass("test2");
+                $("#roundback3").css("opacity", "1");
+            } else {
+                $("#back3").hide();
+                $("#roundshow3").removeClass();
+                $("#roundshow3").addClass("test2");
+                $("#roundback3").removeClass();
+                $("#roundback3").addClass("test");
+            }
+        });
+
+        // function show(num) {
+        // 	$("#back" + num).show();
+        // 	$("#roundshow" + num).removeClass();
+        // 	$("#roundshow" + num).addClass("test");
+        // 	$("#roundback" + num).removeClass();
+        // 	$("#roundback" + num).addClass("test2");
+        // 	$("#roundback" + num).css("opacity", "1");
+        // }
+
+        // function hide(num) {
+        // 	$("#back" + num).hide();
+        // 	$("#roundshow" + num).removeClass();
+        // 	$("#roundshow" + num).addClass("test2");
+        // 	$("#roundback" + num).removeClass();
+        // 	$("#roundback" + num).addClass("test");
+
+        // }
+
+        // function showXQ(num) {
+
+        // 	// $("#ljxq"+num).hide();
+        // 	$("#xq" + num).show();
+        // 	$("#xq" + num).addClass('animated fadeIn');
+        // }
+
+        // function hideXQ(num) {
+        // 	$("#xq" + num).hide();
+        // 	// $("#ljxq"+num).show();
+        // 	// $("#xq"+num).addClass('animated fadeIn');
+        // }
+
+        $(".p6-w3").click(function() {
+            if ($("#xq1").css("display") == "none") {
+                $("#xq2").hide();
+                $("#xq1").show();
+                $("#xq1").addClass('animated fadeIn');
+            } else {
+                $("#xq1").hide();
+            }
+        });
+
+        $(".p6-w7").click(function() {
+            if ($("#xq2").css("display") == "none") {
+                $("#xq1").hide();
+                $("#xq2").show();
+                $("#xq2").addClass('animated fadeIn');
+            } else {
+                $("#xq2").hide();
+            }
+        });
+
+
+
+
+        // function showinfo(num){
+        // 	$("#leftinfo"+num).show();
+        // }
+
+        // function hideinfo(num){
+        // 	$("#leftinfo"+num).hide();
+        // }
+
+        function show3(num) {
+            if (num == 3) {
+                $("#light1").show();
+                $("#tabinfo1").show();
+                $("#imgsm").fadeIn(1000);
+                $("#imgzy").fadeIn(2000);
+                $("#imgff").fadeIn(3000);
+                $("#imglh").fadeIn(4000);
+                $("#light2").hide();
+                $("#tabinfo2").hide();
+                $("#light3").hide();
+                $("#tabinfo3").hide();
+            } else if (num == 2) {
+                $("#imgsm").hide();
+                $("#imgzy").hide();
+                $("#imgff").hide();
+                $("#imglh").hide();
+                $("#tabinfo3text").hide();
+                $("#tabinfo3img").hide();
+                $("#light2").show();
+                $("#tabinfo2").show();
+                $("#light1").hide();
+                $("#tabinfo1").hide();
+                $("#light3").hide();
+                $("#tabinfo3").hide();
+            } else if (num == 1) {
+                $("#imgsm").hide();
+                $("#imgzy").hide();
+                $("#imgff").hide();
+                $("#imglh").hide();
+                $("#light3").show();
+                $("#tabinfo3").show();
+                $("#tabinfo3text").show();
+                $("#tabinfo3text").addClass('animated fadeInLeft');
+                $("#tabinfo3img").show();
+                $("#tabinfo3img").addClass('animated fadeInUp');
+                $("#light1").hide();
+                $("#tabinfo1").hide();
+                $("#light2").hide();
+                $("#tabinfo2").hide();
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
