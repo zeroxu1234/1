@@ -155,6 +155,7 @@
   width: 100%;
 }
 .opposite{
+  position: absolute;
   width: 100%;
 }
 .opposite-content{
