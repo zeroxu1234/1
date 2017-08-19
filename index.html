@@ -155,11 +155,15 @@
                 // menu: '#menu',
                 keyboardScrolling: true,
                 afterRender: function() {
-                    $("#loadingDiv").show();
-                    setTimeout('$("#loadingDiv").fadeOut(1000)', 8000);
-                    setTimeout('$("#logoround").fadeIn()', 8000);
-                    setTimeout('$("#summary").fadeIn(1500)', 10000);
-                    setTimeout('$("#BMsummary").fadeIn(1500)', 11000);
+                    // $("#loadingDiv").show();
+                    // setTimeout('$("#loadingDiv").fadeOut(1000)', 8000);
+                    // setTimeout('$("#logoround").fadeIn()', 8000);
+                    // setTimeout('$("#summary").fadeIn(1500)', 10000);
+                    // setTimeout('$("#BMsummary").fadeIn(1500)', 11000);
+
+                    setTimeout('$("#logoround").fadeIn()', 2000);
+                    setTimeout('$("#summary").fadeIn(1500)', 4000);
+                    setTimeout('$("#BMsummary").fadeIn(1500)', 4000);
                 },
                 afterLoad: function(anchorLink, index) {
                     if (index == 1) {
@@ -403,8 +407,7 @@
                 </div>
             </div>
         </div>-->
-        <!--<div style="position: absolute;left: 12%;bottom: -5%;">上海莹案信息科技有限公司 </div>
-        <div style="position: absolute;left: 43%;bottom: -5%;">地址:上海市徐汇区天钥桥路580号星游城6楼 </div>-->
+
     </div>
 
 
@@ -446,7 +449,7 @@
         <div class="section section2">
             <h1 class="tm font1 w3">了解极光</h1>
             <div class="row w4">
-                <div class="col-xs-3" id="page2logo1" hidden="true">
+                <!--<div class="col-xs-3" id="page2logo1" hidden="true">
                     <div><img alt="" src="images/dfmzlog2.png"></div>
                     <div class="mp"><img alt="" src="images/smg2.png"></div>
                 </div>
@@ -465,19 +468,17 @@
                 <div class="col-xs-3" id="page2logo2" hidden="true">
                     <div><img alt="" src="images/best2.png" style="width: 100%;"></div>
                     <div class="mp"><img alt="" src="images/jiguang2.png"></div>
-                </div>
+                </div>-->
 
-<!--                 <div class="col-xs-3" id="page2logo1" hidden="true">
-			<div class="mp"><img alt="" src="images/jiguang2.png"></div>			
-		</div> 			
-		<div class="col-xs-9 p2-l" align="left" id="page2text1" hidden="true">
-		<div class="font3 w6">极光私人影院</div>
-			<p class="font2">极光私人影院率属于上海萤案信息科技有限公司，我们的两位创始人作为复旦校友，
-			一位80后资深产品经理人、一位90后互联网创业者，因为热爱电影，且看好中国电影产业的未来发展而共同创业，
-			他们自2011年以来就在点播系统、播放设备、观影工程条件、用户体验等多方位探索电影视听娱乐新体验，
-			可以说目前全国40%私人影院播放系统都出自或模仿自他们之手，通过不断的体系完善和对市场的深入了解，
-			终于在2016打造出了极光私人影院这一全国性品牌，并立即获得了上海文广集团旗下的百视通鼎力支持，成为我们的长期战略合作伙伴。</p>
-		</div> -->
+                <div class="col-xs-3" id="page2logo1" hidden="true">
+                    <div class="mp"><img alt="" src="images/jiguang2.png"></div>
+                </div>
+                <div class="col-xs-9 p2-l" align="left" id="page2text1" hidden="true">
+                    <div class="font3 w6">极光私人影院</div>
+                    <!--<p class="font2">极光私人影院率属于上海萤案信息科技有限公司，我们的两位创始人作为复旦校友， 一位80后资深产品经理人、一位90后互联网创业者，因为热爱电影，且看好中国电影产业的未来发展而共同创业， 他们自2011年以来就在点播系统、播放设备、观影工程条件、用户体验等多方位探索电影视听娱乐新体验， 可以说目前全国40%私人影院播放系统都出自或模仿自他们之手，通过不断的体系完善和对市场的深入了解， 终于在2016打造出了极光私人影院这一全国性品牌，并立即获得了上海文广集团旗下的百视通鼎力支持，成为我们的长期战略合作伙伴。
+                    </p>-->
+                    <p class="font2">上海萤案信息技术有限公司于2016年正式创建极光品牌，由一支互联网思维的年轻团队自主独立运营，以互联网思维的品牌模式，完善健全的营销与运营体系服务于极光的所有合作方，致力于打造一支“统一品牌、统一管理、统一经营”的现代化管理模式的数字电影院线。 </p>
+                </div>
             </div>
             <div class="down">
                 <img src="images/down-arrow.png" alt="" onclick="$.fn.fullpage.moveSectionDown();">
@@ -643,7 +644,7 @@
 
         <div class="section section7">
             <h1 class="p7-w1 font1">加入极光</h1>
-            <div style="position: absolute;right: 5%; bottom:10%;font-size: 20px;">合作热线： 400-677-7267</div>
+            <div style="position: absolute;right: 5%; bottom:15%;font-size: 20px;">合作热线： 400-677-7267</div>
             <hr class="p7-lan" />
             <div class="p7-lan2 font2" align="left">合作伙伴
                 <img alt="" src="images/BestMovie1.png" style="height: 50%;margin-left: 1%;">
@@ -654,6 +655,9 @@
                 <img alt="" src="images/bottomlogo5.png" style="height: 50%;margin-left: 1%;">
                 <img alt="" src="images/bottomlogo6.png" style="height: 50%;margin-left: 1%;">
                 <div class="p7-beian">沪ICP备17010355号-1</div>
+                <div style="position: absolute;right: 7%;bottom: 220%;">上海总部</div>
+                <div style="position: absolute;right: 4%;bottom: 169%;">电话：021-60523700</div>
+                <div style="position: absolute;right: 0%;bottom: 125%;">地址:上海市徐汇区天钥桥路580号星游城6楼 </div>
             </div>
             <div style="position: absolute;right: 1%; bottom:2%;">
                 <img src="images/up.png" alt="" onclick="$.fn.fullpage.moveTo(1);">
@@ -931,18 +935,19 @@
             }
 
         }
-	    
-	    ubuntu@VM-4-185-ubuntu:/var/www/aurora_website_git$ git diff index.html
-diff --git a/index.html b/index.html
-index f5b9cd0..65c82f7 100644
---- a/index.html
-+++ b/index.html
-@@ -932,7 +932,7 @@
-
-         }
     </script>
--
-+<script src="https://s19.cnzz.com/z_stat.php?id=1263405491&web_id=1263405491" language="JavaScript"></script>^M
+    <script>
+        ubuntu @VM - 4 - 185 - ubuntu: /var/www / aurora_website_git$ git diff index.html
+        diff--git a / index.html b / index.html
+        index f5b9cd0..65 c82f7 100644
+            -- - a / index.html
+            ++ + b / index.html
+        @ @ - 932, 7 + 932, 7 @ @
+
+        }
+    </script>
+    - +
+    <script src="https://s19.cnzz.com/z_stat.php?id=1263405491&web_id=1263405491" language="JavaScript"></script>^M
 </body>
 
 </html>
