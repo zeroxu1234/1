@@ -152,7 +152,7 @@
     position: absolute;
     z-index: 200;
     left: 40%;
-    top: 40%;
+    top: 48%;
 }
 
 
@@ -198,7 +198,7 @@
         display: none;
         position: absolute;
         z-index: 200;
-        left: 40%;
+        left: 48%;
     }
 }
 
@@ -208,7 +208,7 @@
         position: absolute;
         z-index: 200;
         left: 40%;
-        top: 40%;
+        top: 48%;
     }
     .p1-w1 img {
         width: 80%;
@@ -955,7 +955,7 @@
 
 .p7-w4 {
     width: absolute;
-    left: 10%;  
+    left: 10%;
 }
 
 .p7-w5 {
